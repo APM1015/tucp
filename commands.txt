@@ -1,0 +1,22 @@
+gcc tucp.c -o tucp.out -Wall -Werror
+mkdir output-A output-B
+./tucp.out DFC.pdf logo512.png output-A/
+./tucp.out sample.txt copy_of_sample.txt
+./tucp.out sample.txt ..
+cat ../sample.txt
+
+---
+
+# folder does not exist
+./tucp.out sample.txt ./fake-folder/
+
+# too short error or possible folder error
+./tucp.out output-A/ 
+
+# folder to folder copy error
+./tucp.out output-A/ output-B/
+
+# folder to file copy error
+./tucp.out output-A/ logo512.png
+
+
