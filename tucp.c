@@ -12,15 +12,6 @@ int copySourToDir(FILE *source, FILE *dest);//coppy source file to directory
 int multSourToDir(FILE *source, FILE *dest);
 
 int main(int argc, char const *argv[]) {
-    //if(argc < 4){
-      //  perror("Invalid number of arguments");
-      //  exit(EXIT_FAILURE);
-   // }
-   // int bufferS = atoi(argv[3]);
-  //  if(bufferS < 1){
-   //     perror("Invalid number of buffer size");
-   //     exit(EXIT_FAILURE);
-   // }
 
     //open files
     FILE *source = fopen(argv[1], "r");
