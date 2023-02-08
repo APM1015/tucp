@@ -12,15 +12,15 @@ int copySourToDir(FILE *source, FILE *dest);//coppy source file to directory
 int multSourToDir(FILE *source, FILE *dest);
 
 int main(int argc, char const *argv[]) {
-    if(argc < 2){
+    if (argc < 2) {
         perror("Invalid number of arguments");
         exit(EXIT_FAILURE);
     }
-   // int bufferS = atoi(argv[3]);
-  //  if(bufferS < 1){
-   //     perror("Invalid number of buffer size");
-   //     exit(EXIT_FAILURE);
-   // }
+    // int bufferS = atoi(argv[3]);
+    //  if(bufferS < 1){
+    //     perror("Invalid number of buffer size");
+    //     exit(EXIT_FAILURE);
+    // }
 
     //open files
     FILE *source = fopen(argv[1], "r");
@@ -30,11 +30,13 @@ int main(int argc, char const *argv[]) {
 
     char ch = fgetc(source);
 
-    while((ch = fgetc(source)) != EOF){
+    while ((ch = fgetc(source)) != EOF) {
         fputc(ch, dest);
         ch = fgetc(source);
     }
     fclose(source);
     fclose(dest);
 
+    return 0;
+}
     
