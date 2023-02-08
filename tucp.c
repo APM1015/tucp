@@ -12,7 +12,15 @@ int copySourToDir(FILE *source, FILE *dest);//coppy source file to directory
 int multSourToDir(FILE *source, FILE *dest);
 
 int main(int argc, char const *argv[]) {
-   
+    //if(argc < 4){
+      //  perror("Invalid number of arguments");
+      //  exit(EXIT_FAILURE);
+   // }
+   // int bufferS = atoi(argv[3]);
+  //  if(bufferS < 1){
+   //     perror("Invalid number of buffer size");
+   //     exit(EXIT_FAILURE);
+   // }
 
     //open files
     FILE *source = fopen(argv[1], "r");
@@ -37,7 +45,6 @@ int main(int argc, char const *argv[]) {
 
     }
     else if(ret == 0 && argc > 2){
-
         for(int i = 1; i < (argc-1); i++){
             multSourToDir(argv[i], argv[argc-1]);
         }
@@ -61,18 +68,18 @@ void copySourToDest(FILE *source, FILE *dest){
 
 }
 int copySourToDir(FILE *source, FILE *dest){
-    
-    //int i = 0;
+
+   // int i = 0;
     FILE *sourInDir; //creates new file that will go inside directory
     char ch = fgetc(source); //gets information inside source file to go into new directory file
     sourInDir = fopen(dest, "w"); //opens directory file to write source file in the new file
     while(ch != EOF){
-        //if(i > 256){
-       //     i = 0;
+      //  if(i > 256){
+        //    i = 0;
        // }
         fputc(ch, sourInDir);
         ch = fgetc(source);
-        //i++;
+       // i++;
     }
 
     //charbuff[i] = '\0';
@@ -80,7 +87,21 @@ int copySourToDir(FILE *source, FILE *dest){
 
 }
 int multSourToDir(FILE *source, FILE *dest){
+    int i = 0;
+    FILE *sourInDir; //creates new file that will go inside directory
+    char ch = fgetc(source); //gets information inside source file to go into new directory file
+    sourInDir = fopen(dest, "w"); //opens directory file to write source file in the new file
+    while(ch != EOF){
+        //if(i > 256){
+        //    i = 0;
+       // }
+        fputc(ch, sourInDir);
+        ch = fgetc(source);
+        //i++;
+    }
 
+   // charbuff[i] = '\0';
+    fclose(sourInDir);
 }
 int checkDir(const char *filename) {
     struct stat path;
