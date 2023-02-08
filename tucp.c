@@ -38,6 +38,9 @@ int main(int argc, char const *argv[]) {
     }
     else if(ret == 0 && argc > 2){
 
+        for(int i = 1; i < (argc-1); i++){
+            multSourToDir(argv[i], argv[argc-1]);
+        }
         multSourToDir(source, dest);
     }
     fclose(source);
