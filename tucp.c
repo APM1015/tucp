@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <dirent.h>
 #include <sys/stat.h>
-#include <string.h>//to use strcat to append the path
+#include <string.h>
 #include <libgen.h>
 #include <fcntl.h>
 #include <unistd.h>
@@ -13,7 +13,7 @@ int copySourToDir(const char *source, const char *dest);//coppy source file to d
 int multSourToDir(const char *source, const char *dest);//coppy mult source files to directory
 
 int main(int argc, char const *argv[]) {
-    if (argc < 2) {
+    if (argc < 2) {//If less than two arguments entered error prompty because cannot run
         perror("Invalid number of arguments");
         exit(EXIT_FAILURE);
     }
@@ -36,26 +36,20 @@ int main(int argc, char const *argv[]) {
 
     }
 
-
-
     return 0;
 }
 int copySourToDest(const char *f1, const char *f2){
-    //dest = fopen(dest, "w");
-    FILE *source, *dest;
-    //char ch = fgetc(source);
-    source = fopen(f1, "r");
-    dest = fopen(f2, "w");
+    FILE *source, *dest; //creating pointer for arguments to be opened in
+
+    source = fopen(f1, "r"); //opening first argument
+    dest = fopen(f2, "w"); //opening second argument
 
     char ch;
-    while((ch = fgetc(source)) != EOF){
+    while((ch = fgetc(source)) != EOF){ //Geting each character from first file and putting it into second file
         fputc(ch, dest);
-        //out = fwrite(buff, 1, in, dest);
-        //ch = fgetc(source);
-       // putc(ch, dest);
     }
-    fclose(source);
-    fclose(dest);
+    fclose(source); //closing file1
+    fclose(dest); //closing file2
    return 0;
 
 }
@@ -64,14 +58,12 @@ int copySourToDir(const char *f1, const char *f2){
 
     FILE *source;
     source = fopen(f1, "r");
-    //dest = fopen(f2, "w");
 
     FILE *sourInDir; //creates new file that will go inside directory
     char ch; //gets information inside source file to go into new directory file
     sourInDir = fopen(f2, "w"); //opens directory file to write source file in the new file
     while((ch = fgetc(source)) != EOF){
         fputc(ch, sourInDir);
-       // ch = fgetc(source);
     }
     fclose(source);
     fclose(sourInDir);
@@ -95,9 +87,8 @@ int multSourToDir(const char *f1, const char *f2){
     return 0;
 }
 
-int checkDir(const char *filename) {
+int checkDir(const char *filename) { //using stat to check if file or directory
     struct stat path;
     stat(filename, &path);
     return S_ISREG(path.st_mode);
 }
-
