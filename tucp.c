@@ -51,7 +51,7 @@ void copySourToDest(FILE *source, FILE *dest){
 
     char ch = fgetc(source);
 
-    while(ch != EOF){
+    while((ch = fgetc(source)) != EOF){
         fputc(ch, dest);
         ch = fgetc(source);
     }
@@ -64,7 +64,7 @@ int copySourToDir(FILE *source, FILE *dest){
     FILE *sourInDir; //creates new file that will go inside directory
     char ch = fgetc(source); //gets information inside source file to go into new directory file
     sourInDir = fopen(dest, "w"); //opens directory file to write source file in the new file
-    while(ch != EOF){
+    while((ch = fgetc(source)) != EOF){
       //  if(i > 256){
         //    i = 0;
        // }
