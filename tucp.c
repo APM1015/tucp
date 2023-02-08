@@ -12,41 +12,20 @@ int copySourToDir(FILE *source, FILE *dest);//coppy source file to directory
 int multSourToDir(FILE *source, FILE *dest);
 
 int main(int argc, char const *argv[]) {
+    if(argc < 2){
+        perror("Invalid number of arguments");
+        exit(EXIT_FAILURE);
+    }
+   // int bufferS = atoi(argv[3]);
+  //  if(bufferS < 1){
+   //     perror("Invalid number of buffer size");
+   //     exit(EXIT_FAILURE);
+   // }
 
     //open files
     FILE *source = fopen(argv[1], "r");
     FILE *dest = fopen(argv[2], "r");
 
-    if(source == NULL || dest == NULL){//check if file is empty
-        perror("Unable to open file \n");
-        exit(EXIT_FAILURE);
-    }
-
-    int ret = 1;
-    ret = checkDir(dest);//checking if the destination file is a file or directory
-    //if 0-> directory: if 1->no directory
-    if(ret == 0){//file to directory
-
-        copySourToDir(source, dest);
-
-    }
-    else if(ret == 1){//source file to destination file
-
-        copySourToDest(source, dest);
-
-    }
-    else if(ret == 0 && argc > 2){
-        for(int i = 1; i < (argc-1); i++){
-            multSourToDir(argv[i], argv[argc-1]);
-        }
-        multSourToDir(source, dest);
-    }
-    fclose(source);
-    fclose(dest);
-
-    return 0;
-}
-int copySourToDest(FILE *source, FILE *dest){
     dest = fopen(dest, "w");
 
     char ch = fgetc(source);
@@ -55,48 +34,7 @@ int copySourToDest(FILE *source, FILE *dest){
         fputc(ch, dest);
         ch = fgetc(source);
     }
-   // return ch;
+    fclose(source);
+    fclose(dest);
 
-}
-int copySourToDir(FILE *source, FILE *dest){
-
-   // int i = 0;
-    FILE *sourInDir; //creates new file that will go inside directory
-    char ch = fgetc(source); //gets information inside source file to go into new directory file
-    sourInDir = fopen(dest, "w"); //opens directory file to write source file in the new file
-    while((ch = fgetc(source)) != EOF){
-      //  if(i > 256){
-        //    i = 0;
-       // }
-        fputc(ch, sourInDir);
-        ch = fgetc(source);
-       // i++;
-    }
-
-    //charbuff[i] = '\0';
-    fclose(sourInDir);
-
-}
-int multSourToDir(FILE *source, FILE *dest){
-    int i = 0;
-    FILE *sourInDir; //creates new file that will go inside directory
-    char ch = fgetc(source); //gets information inside source file to go into new directory file
-    sourInDir = fopen(dest, "w"); //opens directory file to write source file in the new file
-    while(ch != EOF){
-        //if(i > 256){
-        //    i = 0;
-       // }
-        fputc(ch, sourInDir);
-        ch = fgetc(source);
-        //i++;
-    }
-
-   // charbuff[i] = '\0';
-    fclose(sourInDir);
-}
-int checkDir(const char *filename) {
-    struct stat path;
-    stat(filename, &path);
-    return S_ISREG(path.st_mode);
-}
-
+    return 0;
