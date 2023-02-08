@@ -4,7 +4,7 @@
 #include <sys/stat.h>
 #include <string.h>//to use strcat to append the path
 #include <libgen.h>
-char charbuff[256];
+//char charbuff[256];
 
 int checkDir(const char *string);//checks if it is a directory
 void copySourToDest(FILE *source, FILE *dest);//coppy single source file to single file
@@ -59,20 +59,20 @@ void copySourToDest(FILE *source, FILE *dest){
 }
 int copySourToDir(FILE *source, FILE *dest){
     
-    int i = 0;
+    //int i = 0;
     FILE *sourInDir; //creates new file that will go inside directory
     char ch = fgetc(source); //gets information inside source file to go into new directory file
     sourInDir = fopen(dest, "w"); //opens directory file to write source file in the new file
     while(ch != EOF){
-        if(i > 256){
-            i = 0;
-        }
+        //if(i > 256){
+       //     i = 0;
+       // }
         fputc(ch, sourInDir);
         ch = fgetc(source);
-        i++;
+        //i++;
     }
 
-    charbuff[i] = '\0';
+    //charbuff[i] = '\0';
     fclose(sourInDir);
 
 }
