@@ -1,0 +1,15 @@
+    Tucp was a lab that took me a fairly long time to finish. I created four functions to go along with my main method.
+  My main method simply checks how many file or directory arguments are given. Then takes the last argument given
+  and check wether or not that argument is a file or directory using my checkDir function. If it is a file and 
+  not a directory then my copySourToDest function is called. If it is a directory and has more than two arguments 
+  then a for loop is iterated calling each of the files leading up to the directory with my multSourToDir function.
+  If it is a directory with two arguments then my multSourToDir function is called. 
+    My copySourToDest function takes in the two arguments then puts the first one in a source pointer, opens it, 
+ and reads it. Then second argument is put into a dest pointer, opened, and activated to write. Then I created a 
+ char that goes through a while loop and gets each piece from the first file until there is nothing left. This while
+ loop is putting the chars into the second dest file. Once this is completed then the two pointers are closed.
+    My copySourToDir and copySourToDir functions are the same(I just got it working and do not want to mess with 
+ it anymore). They are similiar to the copySourToDest function. However, they create a new file pointer. This 
+ pointer is set equal in the directory. This allowed me to call the same while loop and put the chars from the first
+ file into this directory file. The files are then closed. 
+   
