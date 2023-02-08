@@ -23,8 +23,8 @@ int main(int argc, char const *argv[]) {
     // }
 
     //open files
-    FILE *source = fopen(argv[1], "r");
-    FILE *dest = fopen(argv[2], "r");
+    FILE source = fopen(argv[1], "r");
+    FILE dest = fopen(argv[2], "r");
 
     dest = fopen(dest, "w");
 
