@@ -37,4 +37,4 @@ int main(int argc, char const *argv[]) {
     fclose(source);
     fclose(dest);
 
-    return 0;
+    
