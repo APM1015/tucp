@@ -7,7 +7,7 @@
 //char charbuff[256];
 
 int checkDir(const char *string);//checks if it is a directory
-void copySourToDest(FILE *source, FILE *dest);//coppy single source file to single file
+int copySourToDest(FILE *source, FILE *dest);//coppy single source file to single file
 int copySourToDir(FILE *source, FILE *dest);//coppy source file to directory
 int multSourToDir(FILE *source, FILE *dest);
 
@@ -46,7 +46,7 @@ int main(int argc, char const *argv[]) {
 
     return 0;
 }
-void copySourToDest(FILE *source, FILE *dest){
+int copySourToDest(FILE *source, FILE *dest){
     dest = fopen(dest, "w");
 
     char ch = fgetc(source);
